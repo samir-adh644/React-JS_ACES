@@ -1,20 +1,28 @@
 function Cards(){
 return(
-<div className="max-w-sm mb-6 md:md-0 col-span-12 sm:col-span-6 lg:col-span-4 border p-4 rounded-lg shadow-lg">
-  <a href="/singlepage">
-    <img srcSet="https://laravelnews.imgix.net/images/laravel9-1646792144.jpg?ixlib=php-3.3.1 1x,https://laravelnews.imgix.net/images/laravel9-1646792144.jpg?dpr=2&ixlib=php-3.3.1 2x" src="https://laravelnews.imgix.net/images/laravel9-1646792144.jpg?ixlib=php-3.3.1" className="w-full mb-4 rounded-lg shadow-none transition transition-shadow duration-500 ease-in-out group-hover:shadow-lg" alt="laravel9-1646792144.jpg" />
-    <div className="flex items-center mb-3">
-      <span className="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-bold leading-5 text-white font-display mr-2 capitalize bg-red-500">
-        News
-      </span>
-      <p className="font-mono text-xs font-normal opacity-75 text-black">September 28th, 2022</p>
+<div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
+  <div className="rounded overflow-hidden flex flex-col max-w-xl mx-auto">
+    <a href="/singlepage">
+      <img className="w-full" src="https://images.unsplash.com/photo-1493723843671-1d655e66ac1c" alt="" />
+    </a>
+    <div className="relative -mt-16 px-10 pt-5 pb-16 bg-purple-700 m-10 rounded-2xl">
+      <a href="/singlepage" className="font-semibold text-lg inline-block hover:text-white transition duration-500 ease-in-out inline-block mb-2">
+       React JS: Build Fast, Interactive UIs with Ease</a>
+      <p className="text-white text-sm">
+        React JS is a JavaScript library for building fast, dynamic, and reusable user interfaces.
+      </p>
+      <p className="mt-5 text-black text-xs">
+        By
+        <a href="#" className="text-xs text-white transition duration-500 ease-in-out">
+          Samir Adhikari
+        </a> | in <a href="#" className="text-xs text-white transition duration-500 ease-in-out">
+          Itahari
+        </a>, <a href="#" className="text-xs text-white transition duration-500 ease-in-out">
+          Nepal
+        </a>
+      </p>
     </div>
-    <p className="font-display max-w-sm text-2xl font-bold leading-tight">
-      <span className="link-underline link-underline-black text-black">
-        Laravel 9.32 Released
-      </span>
-    </p>
-  </a>
+  </div>
 </div>
 
 )
