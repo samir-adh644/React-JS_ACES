@@ -1,31 +1,33 @@
-function Cards(){
-return(
-<div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
-  <div className="rounded overflow-hidden flex flex-col max-w-xl mx-auto">
-    <a href="/singlepage">
-      <img className="w-full" src="https://images.unsplash.com/photo-1493723843671-1d655e66ac1c" alt="" />
-    </a>
-    <div className="relative -mt-16 px-10 pt-5 pb-16 bg-purple-700 m-10 rounded-2xl">
-      <a href="/singlepage" className="font-semibold text-lg inline-block hover:text-white transition duration-500 ease-in-out inline-block mb-2">
-       React JS: Build Fast, Interactive UIs with Ease</a>
-      <p className="text-white text-sm">
-        React JS is a JavaScript library for building fast, dynamic, and reusable user interfaces.
-      </p>
-      <p className="mt-5 text-black text-xs">
-        By
-        <a href="#" className="text-xs text-white transition duration-500 ease-in-out">
-          Samir Adhikari
-        </a> | in <a href="#" className="text-xs text-white transition duration-500 ease-in-out">
-          Itahari
-        </a>, <a href="#" className="text-xs text-white transition duration-500 ease-in-out">
-          Nepal
-        </a>
-      </p>
-    </div>
-  </div>
-</div>
 
-)
+function Cards() {
+  return (
+    <div className="max-w-screen-xl mx-auto p-6 sm:p-10 md:p-16">
+      <div className="max-w-md mx-auto bg-white shadow-xl rounded-3xl overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+        <a href="/singlepage">
+          <img
+            className="w-full h-56 object-cover"
+            src="https://images.unsplash.com/photo-1493723843671-1d655e66ac1c"
+            alt="React Blog Post"
+          />
+        </a>
+        <div className="p-6 bg-purple-700 text-white">
+          <a
+            href="/singlepage"
+            className="text-xl font-semibold hover:text-black block mb-2"
+          >
+            React JS: Build Fast, Interactive UIs with Ease
+          </a>
+          <p className="text-sm leading-relaxed">
+            React JS is a JavaScript library for building fast, dynamic, and reusable user interfaces.
+          </p>
+          <div className="mt-4 text-xs text-gray-300">
+            By <span className="font-medium text-white">Samir Adhikari</span> |
+            Location: <span className="text-white">Itahari, Nepal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default Cards
+export default Cards;
