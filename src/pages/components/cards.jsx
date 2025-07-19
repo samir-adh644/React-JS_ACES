@@ -1,12 +1,13 @@
 
-function Cards() {
+function Cards({blog}) {
+  console.log(blog)
   return (
     <div className="max-w-screen-xl mx-auto p-6 sm:p-10 md:p-16">
       <div className="max-w-md mx-auto bg-white shadow-xl rounded-3xl overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl">
         <a href="/singlepage">
           <img
             className="w-full h-56 object-cover"
-            src="https://images.unsplash.com/photo-1493723843671-1d655e66ac1c"
+            src={blog.image}
             alt="React Blog Post"
           />
         </a>
@@ -15,10 +16,10 @@ function Cards() {
             href="/singlepage"
             className="text-xl font-semibold hover:text-black block mb-2"
           >
-            React JS: Build Fast, Interactive UIs with Ease
+           {blog.title}
           </a>
           <p className="text-sm leading-relaxed">
-            React JS is a JavaScript library for building fast, dynamic, and reusable user interfaces.
+           {blog.subtitle}
           </p>
           <div className="mt-4 text-xs text-gray-300">
             By <span className="font-medium text-white">Samir Adhikari</span> |
