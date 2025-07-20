@@ -1,22 +1,29 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Create from './pages/Create';
-import Editpage from './pages/Editpage';
-import Singlepage from './pages/Singlepage';
-import LearningUseState from "./pages/LearningUseState"
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import Home from './pages/Home'
+import Create from './pages/Create'
+import LearningUseState from './pages/LearningUseState'
+import SinglePage from './pages/SinglePage'
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/create" element={<Create />} />
-        <Route path="/edit" element={<Editpage />} />
-        <Route path="/singlepage" element={<Singlepage/>} />
-         <Route path="/learning-usestate" element={<LearningUseState/>} />
-      </Routes>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/create' element={<Create />} />
+      <Route path='/single/:id' element={<SinglePage />} />
+
+      <Route path='/learning-usestate' element={<LearningUseState />} />
+    </Routes>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+// "/" - this is index page 
+/*
+Project - CRUD 
+/ - Home page
+/create - Create Page 
+/edit - Edit Page 
+/blog - Single Blog Page 
+*/
+export default App
