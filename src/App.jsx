@@ -2,7 +2,7 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Home from './pages/Home'
 import Create from './pages/Create'
 import LearningUseState from './pages/LearningUseState'
-import SinglePage from './pages/SinglePage'
+import SinglePage from './pages/Singlepage'
 import Editpage from './pages/Editpage'
 
 function App() {
