@@ -6,20 +6,29 @@ function Card({blog}){
     return(
 
   <Link to={"/single/" + blog.id}>
-<div className="max-w-sm mb-6 md:md-0 col-span-12 sm:col-span-6 lg:col-span-4 border p-4 rounded-lg shadow-lg">
-    <img src={blog.image} className="w-full mb-4 rounded-lg shadow-none transition transition-shadow duration-500 ease-in-out group-hover:shadow-lg" alt="laravel9-1646792144.jpg" />
-    <div className="flex items-center mb-3">
-      <span className="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-bold leading-5 text-white font-display mr-2 capitalize bg-red-500">
+<div className="group max-w-sm col-span-12 sm:col-span-6 lg:col-span-4 p-4 rounded-xl shadow-md border hover:shadow-2xl hover:border-gray-300 transition-all duration-500 bg-white cursor-pointer">
+  <div className="overflow-hidden rounded-lg">
+    <img 
+      src={blog.image} 
+      alt={blog.title} 
+      className="w-full h-48 object-cover rounded-lg transform transition-transform duration-500 group-hover:scale-105"
+    />
+  </div>
+
+  <div className="mt-4 space-y-2">
+    <div className="flex items-center gap-2">
+      <span className="bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide">
         News
       </span>
-      <p className="font-mono text-xs font-normal opacity-75 text-black">{blog.createdAt}</p>
+      <p className="text-xs text-gray-500 font-mono">{blog.createdAt}</p>
     </div>
-    <p className="font-display max-w-sm text-2xl font-bold leading-tight">
-      <span className="link-underline link-underline-black text-black">
-        {blog.title}
-      </span>
-    </p>
+
+    <h2 className="text-lg font-bold text-gray-900 leading-snug group-hover:text-purple-700 group-hover:underline-offset-4 transition-all duration-300">
+      {blog.title}
+    </h2>
+  </div>
 </div>
+
   </Link>
     )
 }

@@ -1,44 +1,98 @@
-import Navbar from "./components/Navbar"
-function Create(){
-    return (
-              <> <Navbar /> 
+import Navbar from "./components/Navbar";
+import { useState } from "react";
+import axios from "axios";
+// import { Await } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-<div>
-  <meta charSet="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Add new Blog Post</title>
-  <section className="flex-grow container mx-auto p-6">
-    <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Create a New Blog Post</h1>
-    <form action="/addBlog" method="POST" className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
-      {/* Title */}
-      <div className="mb-4">
-        <label htmlFor="title" className="block text-gray-700 font-semibold mb-2">Title</label>
-        <input type="text" id="title" name="title" required className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-700" placeholder="Enter blog title" />
-      </div>
-      {/* Title */}
-      <div className="mb-4">
-        <label htmlFor="subtitle" className="block text-gray-700 font-semibold mb-2">Sub Title</label>
-        <input type="text" id="subtitle" name="subtitle" required className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-700" placeholder="Enter blog title" />
-      </div>
-      {/* description */}
-      <div className="mb-4">
-        <label htmlFor="description" className="block text-gray-700 font-semibold mb-2">Description</label>
-        <textarea id="description" name="description" required className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-700" placeholder="Write your blog content here" defaultValue={""} />
-      </div>
-      {/* Submit Button */}
-      <div className="text-center">
-        <button type="submit" className="bg-purple-700 text-white px-6 py-2.5 rounded-md font-semibold hover:bg-blue-700 transition">
-          Publish Post
-        </button>
-      </div>
-    </form>
-  </section>
-</div>
+function Create() {
+  const [title, setTitle] = useState("");
+  const [subtitle, setsubTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+
+  async function sendDataToBackend(e) {
+    e.preventDefault()
+   const response = await axios.post("https://687af358abb83744b7ee466b.mockapi.io/Blogs", {
+      title: title,
+      subtitle: subtitle,
+      description: description,
+      image: image
+    })
+    console.log(response)
+  }
+  const navigate = useNavigate()
+
+  const returnHome =async ()=>{
+    const response = await axios.get("https://687af358abb83744b7ee466b.mockapi.io/Blogs")
+    if(response.status ===200){
+      navigate("/")
+    }
+  }
 
 
-            </>
 
-    )
+  return (
+    <>
+      <Navbar />
+
+      <div className="mx-14 mt-10 border-2 border-blue-400 rounded-lg">
+        <div className="mt-3 text-center text-4xl font-bold">
+          Create the Blogpost
+        </div>
+        <form className="p-8" onSubmit={sendDataToBackend}>
+          <div className="flex gap-4">
+            <input
+              type="text"
+              name="title"
+              className="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+              placeholder="Title"
+              onChange={(e) => setTitle(e.target.value)}
+            />
+
+            <input
+              type="text"
+              name="subtitle"
+              className="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+              placeholder="Subtitle"
+              onChange={(e) => setsubTitle(e.target.value)}
+            />
+          </div>
+
+          <div className="my-6 flex gap-4">
+            <input
+              type="url"
+              name="imageUrl"
+              id="imageUrl"
+              placeholder="Enter image URL"
+              className="block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 font-semibold text-gray-500 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+              onChange={(e) => setImage(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <textarea
+              name="textarea"
+              id="text"
+              cols={30}
+              rows={10}
+              className="mb-10 h-40 w-full resize-none rounded-md border border-slate-300 p-5 font-semibold text-gray-700 placeholder:text-slate-400"
+              placeholder="Description"
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+
+          <div className="text-center">
+            <button
+              onClick={returnHome}
+              className="cursor-pointer rounded-lg bg-blue-700 px-8 py-5 text-sm font-semibold text-white hover:bg-blue-800 transition"
+            >
+              Publish
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
+  );
 }
 
-export default Create
+export default Create;

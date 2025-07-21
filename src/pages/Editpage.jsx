@@ -1,42 +1,55 @@
+import { useState } from "react"
 import Navbar from "./components/Navbar"
-function Editpage(){
-    return (
-        <> <Navbar />
-        
-   <div>
-  <meta charSet="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Edit Blog Post</title>
-  <section className="flex-grow container mx-auto p-6">
-    <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Edit The Page</h1>
-    <form action="/addBlog" method="POST" className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
-   
-      <div className="mb-4">
-        <label htmlFor="title" className="block text-gray-700 font-semibold mb-2">Title</label>
-        <input type="text" id="title" name="title" required className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-700" placeholder="Enter blog title" />
-      </div>
+import axios from "axios"
+import { useNavigate, useParams } from "react-router-dom"
 
-      <div className="mb-4">
-        <label htmlFor="subtitle" className="block text-gray-700 font-semibold mb-2">Sub Title</label>
-        <input type="text" id="subtitle" name="subtitle" required className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-700" placeholder="Enter blog title" />
-      </div>
-  
-      <div className="mb-4">
-        <label htmlFor="description" className="block text-gray-700 font-semibold mb-2">New Description</label>
-        <textarea id="description" name="description" required className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-700" placeholder="Write your blog content here" defaultValue={""} />
-      </div>
-      {/* Submit Button */}
-      <div className="text-center">
-        <button type="submit" className="bg-purple-700 text-white px-6 py-2.5 rounded-md font-semibold hover:bg-blue-700 transition">
-         Edit Post
-        </button>
-      </div>
-    </form>
-  </section>
+function Edit(){
+    const data = useParams()
+    const navigate = useNavigate()
+    const [title,setTitle] = useState("")
+    const [subtitle,setSubtitle] = useState("")
+    const [description,setDescription] = useState("")
+    const [image, setImage] = useState("")
+
+    async function sentEditDataToBackend(e){
+        e.preventDefault()
+      const response =   await axios.put("https://687af358abb83744b7ee465d.mockapi.io/blogs/" + data.id,{
+            title : title, 
+            subtitle : subtitle, 
+            description : description, 
+            image : image
+        })
+        if(response.status == 200){
+            navigate("/single/" + data.id)
+        }else{
+            alert("ERror happened")
+        }
+    }
+
+    return(
+       <>
+       <Navbar />
+    <div className="mx-14 mt-10 border-2 border-blue-400 rounded-lg">
+  <div className="mt-10 text-center font-bold">Blog Edit</div>
+  <div className="mt-3 text-center text-4xl font-bold">Edit a Blog</div>
+  <form onSubmit={sentEditDataToBackend} className="p-8">
+    <div className="flex gap-4">
+      <input type="text" name="title" className="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm" placeholder="Enter a title" onChange={(e)=>setTitle(e.target.value)} />
+      <input type="text" name="subtitle" className="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm" placeholder="Enter a subtitle" onChange={(e)=>setSubtitle(e.target.value)} />
+    </div>
+    <input type="text" name="image" className="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm" placeholder="Enter a image URL" onChange={(e)=>setImage(e.target.value)} />
+    <div className>
+      <textarea onChange={(e)=>setDescription(e.target.value)} name="description" id="text" cols={30} rows={10} className="mb-10 h-40 w-full resize-none rounded-md border border-slate-300 p-5 font-semibold text-gray-300" defaultValue={"Enter Description"} />
+    </div>
+    <div className="text-center">
+      <button type="submit" className="cursor-pointer rounded-lg bg-blue-700 px-8 py-5 text-sm font-semibold text-white">Edit Blog</button>
+    </div>
+  </form>
 </div>
 
-         </>
+       </>
+
     )
 }
 
-export default Editpage
+export default Edit
