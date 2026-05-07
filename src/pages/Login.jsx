@@ -10,7 +10,7 @@ const Login = () => {
         e.preventDefault();
         try {
             // Replace with your actual Render URL
-            const API_URL = "https://blogpost-api-cb1b.onrender.com/api/login"; 
+            const API_URL = "https://blogpost-api-cb1b.onrender.com/api/auth/login"; 
             
             const response = await axios.post(API_URL, { email, password });
             
