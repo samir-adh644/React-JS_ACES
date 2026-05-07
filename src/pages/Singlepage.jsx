@@ -8,8 +8,8 @@ function SinglePage() {
   const [blog, setBlog] = useState({}); // Initialize as object
   const navigate = useNavigate();
 
-  const API_BASE_URL = "http://localhost:3000/api/blog/blogs";
-  const API_DELETE_URL = "http://localhost:3000/api/blog/delete";
+  const API_BASE_URL = "https://blogpost-api-cb1b.onrender.com/api/blog/blogs";
+  const API_DELETE_URL = "https://blogpost-api-cb1b.onrender.com/api/blog/delete";
 
   // Fetch single blog
   async function fetchSingleBlog() {
