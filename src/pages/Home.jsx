@@ -10,7 +10,7 @@ function Home(){
   
   const [blogs,setBlogs] = useState([])
 
-  const API_URL = "http://localhost:3000/api/blog/blogs"
+  const API_URL = "https://blogpost-api-cb1b.onrender.com/api/blog/blogs"
 
   async function fetchBlogs() {
     try {

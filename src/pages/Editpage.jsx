@@ -11,8 +11,8 @@ function Edit() {
     const [subtitle, setSubtitle] = useState("")
     const [description, setDescription] = useState("")
 
-    const API_UPDATE_URL = `http://localhost:3000/api/blog/edit/${id}`
-    const API_FETCH_URL = `http://localhost:3000/api/blog/blogs/${id}`
+    const API_UPDATE_URL = `https://blogpost-api-cb1b.onrender.com/api/blog/edit/${id}`
+    const API_FETCH_URL = `https://blogpost-api-cb1b.onrender.com/api/blog/blogs/${id}`
 
     // 1. Fetch current data to pre-fill the form
     useEffect(() => {

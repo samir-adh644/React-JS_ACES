@@ -13,7 +13,7 @@ function Create() {
   const navigate = useNavigate();
 
   // Replace this with your actual backend URL
-  const API_URL = "http://localhost:3000/api/blog/create"; 
+  const API_URL = "https://blogpost-api-cb1b.onrender.com/api/blog/create"; 
 
   async function sendDataToBackend(e) {
     e.preventDefault();
