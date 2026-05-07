@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Card({ blog }) {
   return (
-    <Link to={`/single/${blog.id}`}>
+    <Link to={`/single/${blog._id}`}>
       <div className="group relative max-w-sm w-full col-span-12 sm:col-span-6 lg:col-span-4 p-5 rounded-2xl border border-slate-200 bg-white backdrop-blur-md shadow-md hover:shadow-xl transition-all duration-500 hover:border-blue-300 cursor-pointer overflow-hidden">
 
      
