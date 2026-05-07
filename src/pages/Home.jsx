@@ -9,32 +9,41 @@ import { useParams } from "react-router-dom"
 function Home(){
   
   const [blogs,setBlogs] = useState([])
-  async function fetchBlogs(){
-  const response = await axios.get("https://687af358abb83744b7ee465d.mockapi.io/blogs")
-  console.log(response)
-  if(response.status == 200){
-    setBlogs(response.data)
-  }else{
-    alert("Error aayooo !!!")
-  }
+
+  const API_URL = "http://localhost:3000/api/blog/blogs"
+
+  async function fetchBlogs() {
+    try {
+      const response = await axios.get(API_URL, {
+        // 2. CRITICAL: Include this so cookies are sent to the backend
+        withCredentials: true 
+      })
+
+      if (response.status === 200) {
+        
+        setBlogs(response.data.blogs)
+      }
+    } catch (error) {
+      console.error("Failed to fetch blogs:", error)
+      alert("Error fetching blogs. Check if you are logged in!")
+    }
   }
 
   useEffect(()=>{
    fetchBlogs()
   },[])
   
-console.log(blogs,"This is blogs")
+
     return(
 <>
      <Navbar />
-       <div className="flex justify-between flex-wrap">
-        {blogs.map(function(blog){
-          return(
-            <Card key={blog.id} blog={blog} />
-          )
-        })}
-    
-       </div>
+       <div className="flex justify-between flex-wrap p-10">
+        {blogs.length > 0 ? (
+          blogs.map((blog) => <Card key={blog.id || blog._id} blog={blog} />)
+        ) : (
+          <p className="text-center w-full mt-10">No blogs found.</p>
+        )}
+      </div>
 
 
 
